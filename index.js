@@ -34,5 +34,9 @@ app.use('/api/current-month', getCurrentMonthRoutes);
 app.use('/api/daily-spends', getDailySpendsRoutes);
 app.use('/api/users', getuserRoute);
 
+app.get("/", (req, res)=>{
+    res.json("You can deploy now...")
+})
+
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
