@@ -20,7 +20,11 @@ const app = express();
 connectDB();
 
 // Middleware
-app.use(cors());
+app.use(cors({
+    origin: ["https://expense-wise.vercel.app"], // Allow requests from this origin
+    methods: ["POST", "GET", "DELETE", "PUT"],
+    credentials: true
+  }));
 app.use(express.json());
 
 // Routes 
