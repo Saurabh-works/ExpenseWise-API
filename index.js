@@ -12,6 +12,7 @@ const getMonthlySpendsRoutes = require('./routes/getMonthlySpendsRoutes');
 const getCurrentMonthRoutes = require('./routes/currentmonthroutes');
 const getDailySpendsRoutes = require('./routes/dailyspendsroutes');
 const getuserRoute = require('./routes/userRoutes');
+const alertRoutes = require("./routes/alertRoutes");
 
 dotenv.config();
 const app = express();
@@ -25,6 +26,8 @@ app.use(cors({
     methods: ["POST", "GET", "DELETE", "PUT"],
     credentials: true
   }));
+
+// app.use(cors());  
 app.use(express.json());
 
 // Routes 
@@ -37,6 +40,7 @@ app.use('/api/monthly-spends', getMonthlySpendsRoutes);
 app.use('/api/current-month', getCurrentMonthRoutes);
 app.use('/api/daily-spends', getDailySpendsRoutes);
 app.use('/api/users', getuserRoute);
+app.use("/api/alerts", alertRoutes);
 
 app.get("/", (req, res)=>{
     res.json("You can deploy now...")
