@@ -123,28 +123,6 @@ const scheduleEmail = (alert) => {
   });
 };
 
-// Get all alerts
-// exports.getAlerts = async (req, res) => {
-//   try {
-//     const alerts = await Alert.find({ userEmail: req.query.userEmail });
-//     res.status(200).json(alerts);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
-// Schedule a new alert
-// exports.createAlert = async (req, res) => {
-//   const { userEmail, type, time, day } = req.body;
-//   try {
-//     const alert = await Alert.create({ userEmail, type, time, day });
-//     scheduleEmail(alert);
-//     res.status(201).json(alert);
-//   } catch (err) {
-//     res.status(500).json({ error: err.message });
-//   }
-// };
-
 // Delete an alert
 exports.deleteAlert = async (req, res) => {
   const { id } = req.params;
