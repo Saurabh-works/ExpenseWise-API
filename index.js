@@ -13,7 +13,6 @@ const getCurrentMonthRoutes = require('./routes/currentmonthroutes');
 const getDailySpendsRoutes = require('./routes/dailyspendsroutes');
 const getuserRoute = require('./routes/userRoutes');
 const alertRoutes = require("./routes/alertRoutes");
-const { initializeAlerts } = require("./controllers/alertController");
 
 
 dotenv.config();
@@ -21,7 +20,7 @@ const app = express();
 
 // Connect to MongoDB
 connectDB();
-initializeAlerts();
+
 
 // Middleware
 app.use(cors({
