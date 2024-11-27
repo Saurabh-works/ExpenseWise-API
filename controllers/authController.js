@@ -1,11 +1,12 @@
 const User = require("../models/Users");
 const jwt = require("jsonwebtoken");
+const nodemailer = require("nodemailer");
+const transporter = require("../config/nodemailer"); // Import the transporter
 
 // Signup
 exports.signup = async (req, res) => {
   const { name, email, password } = req.body;
 
-  // Validation checks
   if (!name || !email || !password) {
     return res.status(400).json({ message: "All fields are required" });
   }
@@ -18,11 +19,56 @@ exports.signup = async (req, res) => {
     const newUser = new User({ name, email, password });
     await newUser.save();
 
-    res.status(201).json({ message: "User created successfully" });
+    // Send welcome email
+    const mailOptions = {
+      from: '"ExpenseWise" <saurabhshinde9637@gmail.com>', // Your email
+      to: email, // Recipient's email
+      subject: "Welcome to ExpenseWise!",
+      html: `
+        <h1>Welcome, ${name}!</h1>
+        <p>Thank you for signing up with ExpenseWise.</p>
+        <p>We're excited to have you on board. Start managing your expenses with ease!</p>
+        <p>- The ExpenseWise Team</p>
+      `,
+    };
+
+    transporter.sendMail(mailOptions, (error, info) => {
+      if (error) {
+        console.error("Error sending email:", error);
+      } else {
+        console.log("Email sent:", info.response);
+      }
+    });
+
+    res.status(201).json({ message: "User created successfully and email sent!" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
 };
+
+
+// Signup
+// exports.signup = async (req, res) => {
+//   const { name, email, password } = req.body;
+
+//   // Validation checks
+//   if (!name || !email || !password) {
+//     return res.status(400).json({ message: "All fields are required" });
+//   }
+
+//   try {
+//     const existingUser = await User.findOne({ email });
+//     if (existingUser)
+//       return res.status(400).json({ message: "Email already exists" });
+
+//     const newUser = new User({ name, email, password });
+//     await newUser.save();
+
+//     res.status(201).json({ message: "User created successfully" });
+//   } catch (error) {
+//     res.status(500).json({ message: error.message });
+//   }
+// };
 
 // Login
 exports.login = async (req, res) => {
