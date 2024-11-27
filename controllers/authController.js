@@ -28,21 +28,21 @@ exports.signup = async (req, res) => {
       to: email, // Recipient's email
       subject: "Welcome to ExpenseWise!",
       html: `
-        <h1 style="color: #4CAF50;">Welcome to ExpenseWise, ${name}!</h1>
+        <h3 style="color: #282826;">Welcome to ExpenseWise, ${name}!</h3>
 
 <p>We're thrilled to have you on board! ExpenseWise is here to help you take control of your finances and make expense tracking a breeze.</p>
 
 <hr style="border: 1px solid #ccc; margin: 20px 0;" />
 
-<h2 style="color: #333;">🎉 What Can You Do with ExpenseWise?</h2>
-<ul style="font-size: 16px; line-height: 1.6;">
+<h4 style="color: #333;">🎉 What Can You Do with ExpenseWise?</h4>
+<ul style="font-size: 10px; line-height: 1.6;">
   <li><strong>Track Your Expenses:</strong> Log and categorize your daily expenses effortlessly.</li>
   <li><strong>Visualize Your Finances:</strong> Get insights through interactive graphs and reports.</li>
   <li><strong>Set Budget Goals:</strong> Plan ahead and stay within your budget.</li>
   <li><strong>Stay Notified:</strong> Receive timely alerts for important financial activities.</li>
 </ul>
 
-<h2 style="color: #333;">✨ Getting Started</h2>
+<h4 style="color: #333;">✨ Getting Started</h4>
 <p>Here are a few quick tips to get started:</p>
 <ol style="font-size: 16px; line-height: 1.6;">
   <li>Log in to your account using the credentials you just created.</li>
@@ -51,7 +51,7 @@ exports.signup = async (req, res) => {
   <li>Set up alerts to stay updated on your financial milestones.</li>
 </ol>
 
-<h2 style="color: #333;">💡 Need Help?</h2>
+<h4 style="color: #333;">💡 Need Help?</h4>
 <p>If you ever need assistance, our support team is just an email away. Feel free to reach out to us at <a href="mailto:saurabhshindework@gmail.com">saurabhshindework@gmail.com</a>.</p>
 
 <p style="font-size: 14px; color: #666;">Happy tracking,<br><strong>The ExpenseWise Team</strong></p>
