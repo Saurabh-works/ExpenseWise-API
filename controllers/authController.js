@@ -12,19 +12,16 @@ exports.signup = async (req, res) => {
   }
 
   try {
-    // Check if user already exists
     const existingUser = await User.findOne({ email });
-    if (existingUser) {
+    if (existingUser)
       return res.status(400).json({ message: "Email already exists" });
-    }
 
-    // Create new user
     const newUser = new User({ name, email, password });
     await newUser.save();
 
-    // Prepare email options
+    // Send welcome email
     const mailOptions = {
-      from: `"ExpenseWise" <${process.env.EMAIL_USER}>`, // Your email
+      from: '"ExpenseWise" <saurabhshinde9637@gmail.com>', // Your email
       to: email, // Recipient's email
       subject: "Welcome to ExpenseWise!",
       html: `
@@ -35,15 +32,15 @@ exports.signup = async (req, res) => {
       `,
     };
 
-    // Send the email
     transporter.sendMail(mailOptions, (error, info) => {
       if (error) {
-        console.error("Error sending email:", error.message);
-        return res.status(500).json({ message: "User created, but email sending failed. Please try again later." });
+        console.error("Error sending email:", error);
+      } else {
+        console.log("Email sent:", info.response);
       }
-      console.log("Email sent successfully:", info.response);
-      res.status(201).json({ message: "User created successfully and email sent!" });
     });
+
+    res.status(201).json({ message: "User created successfully and email sent!" });
   } catch (error) {
     res.status(500).json({ message: error.message });
   }
