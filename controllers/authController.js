@@ -44,7 +44,7 @@ exports.signup = async (req, res) => {
 
 <h4 style="color: #333;">✨ Getting Started</h4>
 <p>Here are a few quick tips to get started:</p>
-<ol style="font-size: 16px; line-height: 1.6;">
+<ol style="font-size: 10px; line-height: 1.6;">
   <li>Log in to your account using the credentials you just created.</li>
   <li>Start by adding your first expense or income entry.</li>
   <li>Explore the dashboard to view detailed analytics and reports.</li>
