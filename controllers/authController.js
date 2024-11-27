@@ -24,7 +24,7 @@ exports.signup = async (req, res) => {
 
     // Prepare email options
     const mailOptions = {
-      from: `"ExpenseWise" <saurabhshinde9637@gmail.com>`, // Your email
+      from: `"ExpenseWise" <${process.env.EMAIL_USER}>`, // Your email
       to: email, // Recipient's email
       subject: "Welcome to ExpenseWise!",
       html: `
